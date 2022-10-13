@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "collect"
+version = "0.1.0"
+description = ""
+authors = ["LeksaKonovalov <kosmostar9r@gmail.com>"]
+readme = "README.md"
+include = [
+    "collect/chromedriver"
+]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+selenium = "^4.5.0"
+beautifulsoup4 = "^4.11.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
