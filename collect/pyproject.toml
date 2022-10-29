@@ -12,6 +12,8 @@ include = [
 python = "^3.8"
 selenium = "^4.5.0"
 beautifulsoup4 = "^4.11.1"
+sqlalchemy = "^1.4.42"
+psycopg2 = "^2.9.5"
 
 
 [build-system]
