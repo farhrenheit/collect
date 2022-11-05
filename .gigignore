@@ -1,0 +1,6 @@
+.vsocde/
+collect/venv/
+collect/.venv/
+collect/rm/
+collect/deactivate/
+collect/_pycahche/
