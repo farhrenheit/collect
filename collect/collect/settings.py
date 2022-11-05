@@ -1,6 +1,7 @@
 from pathlib import Path
 
-TARGET_URL = "https://leon.ru/esports"
-SCROLL_PAUSE_TIME = 0.5
+SCROLL_PAUSE_TIME = 1
+RESPONE_INIT_PAUSE = 5
 DRIVER_PATH = Path(__file__).resolve().parent / "chromedriver"
-DATABSE_URL = "postgresql://postgres:psql@localhost:5432/template1"
+EVENT_TITLE = "CS:GO"
+DATABSE_URL = "postgresql+pg8000://user:@localhost:5432/template2"

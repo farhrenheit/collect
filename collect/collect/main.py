@@ -1,10 +1,11 @@
 import time
+import os
 from uuid import uuid4
 from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.remote.webdriver import WebDriver
 from selenium.webdriver.chrome.options import Options
-from settings import SCROLL_PAUSE_TIME, DRIVER_PATH
+from settings import SCROLL_PAUSE_TIME, DRIVER_PATH, RESPONE_INIT_PAUSE, EVENT_TITLE
 from db import Base, get_db
 from sqlalchemy import select
 from models import GameSchema, CoeffSchema
@@ -12,7 +13,7 @@ from datetime import datetime
 
 
 class LeonParser:
-    TARGET_URL = "https://leon.ru/esports"
+    TARGET_URL = "https://leon.ru/esports/"
 
     def __init__(
         self,
@@ -27,42 +28,59 @@ class LeonParser:
         return browser
 
     def _load_full_page(self):
-        scroll_height = self.browser.execute_script(
-            "return document.querySelector('div[class=content]').scrollHeight"
-        )
-        scroll_height = scroll_height - 500
-        start_scroll_pxl = 0
-        window_h = self.browser.execute_script("return window.innerHeight")
-        while start_scroll_pxl < scroll_height - 500:
-            print("scrolling")
-            self.browser.execute_script(
-                f"document.querySelector('div[class=content]').scroll({start_scroll_pxl}, {start_scroll_pxl + window_h})"
+        def check_h():
+            return self.browser.execute_script(
+                "return document.querySelector('div[class=content]').scrollHeight"
             )
-            start_scroll_pxl += window_h
+        def scroll(start_h, end_h):
+                self.browser.execute_script(
+                f"document.querySelector('div[class=content]').scroll({start_h}, {end_h})"
+            )
+        window_h = self.browser.execute_script("return window.innerHeight")
+        temp_h = window_h
+        start_scroll_h = 0
+        print("\nscrolling-", end='')
+        while check_h() > temp_h:
+            scroll(start_scroll_h, temp_h)
+            start_scroll_h += window_h
+            temp_h += window_h
+            print('>', end='', flush=True)
             time.sleep(SCROLL_PAUSE_TIME)
-
-    def find_dota_events(self):
+        scroll(temp_h,200) ## scroll up
+        print("|done")
+        
+    def find_dota_events(self, remove_heads=True):
+        empty_g = 0
+        fully_g = 0
         soup: BeautifulSoup = BeautifulSoup(self.browser.page_source, "html.parser")
-        events = soup.find_all(class_="group--shown")
-        print(len(events))
+        containers = soup.find_all(class_="group--shown")
+        print(f"| containers found:", len(containers))
         dota_events = []
-        for event in events:
+        for event in containers:
             if not event:
                 continue
             try:
-                lbl = event.div.div.div.div.span.text
+                if remove_heads:
+                    head_containers = event.find_all(class_="sport-event-list-sport-headline")
+                    for head in head_containers:
+                        head.clear()
                 # check international
-                if lbl == "CS:GO":
+                if EVENT_TITLE in str(event):
                     dota_events.append(event)
+                fully_g=+1
             except AttributeError:
-                print("empty group")
+                empty_g=empty_g+1
+        print(f'|  empty:', empty_g)
+        print(f'|  fully:', fully_g)
+        print(f'|   events found:', len(dota_events))
         return dota_events
 
     @staticmethod
     def get_data_from_dota_events(dota_events):
-        for event in dota_events:
-            dota_games = event.find_all(class_="sport-event-list-item__block")
-
+        ev_num=0
+        for container in dota_events:
+            dota_games = container.find_all(class_="sport-event-list-item__block")
+            ev_num=ev_num+1
             for game in dota_games:
                 # get team names
                 titles = game.find_all(
@@ -83,15 +101,17 @@ class LeonParser:
                         .scalars()
                         .one_or_none()
                     )
-                    g_id = game_schema.id
-                    if not game_schema:
+                    if game_schema:
+                        g_id = game_schema.id
+                    elif not game_schema:
                         new_game = GameSchema(
                             id=uuid4(), team_one=t_one_name, team_two=t_two_name
                         )
                         session.add(new_game)
                         session.commit()
                         g_id = new_game.id
-                    print([i.text.strip() for i in titles])
+                        print(f'|--- *new game:', t_one_name, 'x', t_two_name)
+                    ##print([i.text.strip() for i in titles])
                     # get koef
                     coefs = game.find_all(
                         "span",
@@ -111,27 +131,33 @@ class LeonParser:
                         )
                         session.add(coef_schema)
                         session.commit()
-
-                    print(coef_info)
-
-            print(len(dota_games))
+                        
+            print(f'|-> ev[',ev_num,']:> games uploaded to db:', len(dota_games))
 
     def run(self):
+        uptime = datetime.now()
         # запрос на урл
         self.browser.get(self.TARGET_URL)
         # ожидание ответа
-        time.sleep(5)
+        time.sleep(RESPONE_INIT_PAUSE)
         # скролл страницы, чтобы она прогрузилась полностью
         try:
             self._load_full_page()
-            dota_events = self.find_dota_events()
-            self.get_data_from_dota_events(dota_events)
+            for cnt in range(1,4):
+                start_time = time.time()
+                print(f'\nIteration ', cnt,' started at ', datetime.now())
+                dota_events = self.find_dota_events()
+                self.get_data_from_dota_events(dota_events)
+                job_time = time.time() - start_time
+                print(f'Iteration ', cnt,' finished  |  job time: ', job_time, ' |  uptime: ', datetime.now()-uptime, flush=True)  
+                time.sleep(1+cnt%2)      
         finally:
             self.browser.quit()
-
+            
 
 if __name__ == "__main__":
     Base.metadata.drop_all()
     Base.metadata.create_all()
     parser = LeonParser()
     parser.run()
+

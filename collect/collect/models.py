@@ -1,5 +1,5 @@
 from db import Base
-from sqlalchemy import Column, ForeignKey, DateTime, String
+from sqlalchemy import Column, ForeignKey, DateTime, String, Integer
 from sqlalchemy.dialects.postgresql import UUID as UUID_FIELD
 
 
@@ -20,3 +20,10 @@ class CoeffSchema(Base):
     t = Column(String, nullable=True)
     w_two = Column(String, nullable=False)
     timestamp = Column(DateTime, nullable=False)
+    
+
+'''class PageSchema(Base):
+    __tablename__ = "page_info"
+    timestamp = Column(DateTime, nullable=False)
+    height_pxl = Column(Integer, nullable=False)'''
+    
