@@ -17,8 +17,9 @@ class CoeffSchema(Base):
     id = Column(UUID_FIELD(as_uuid=True), primary_key=True, nullable=False)
     game_id = Column(UUID_FIELD(as_uuid=True), ForeignKey("game.id"), nullable=False)
     w_one = Column(String, nullable=False)
-    t = Column(String, nullable=True)
+    draw = Column(String, nullable=True)
     w_two = Column(String, nullable=False)
+    plus = Column(String, nullable=True)
     timestamp = Column(DateTime, nullable=False)
     
 

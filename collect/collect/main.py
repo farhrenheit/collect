@@ -24,6 +24,9 @@ class LeonParser:
     def _browser(self):
         options = Options()
         # options.add_argument("--headless")
+        # options.add_argument("--no-sandbox"))
+        # options.add_argument("--disable-dev-shm-usage")
+        # browser = webdriver.Chrome(executable_path=DRIVER_PATH, options=options)
         browser = webdriver.Chrome(str(DRIVER_PATH), options=options)
         return browser
 
@@ -130,8 +133,8 @@ class LeonParser:
                     t_plus = '0'
                     for c in coef_info:
                         if '+' in c:
-                            t_plus = c
-                    coef_info.remove(c)
+                            t_plus =''.join(filter(str.isdigit,c))
+                            coef_info.remove(c)
                     if len(coef_info) == 0: # [+20] 
                         t_one_coef = t_two_coef = t_draw = coef_info = '0'
                     if len(coef_info) == 2: # [1.5,2.5]
