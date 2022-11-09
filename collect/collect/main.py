@@ -9,7 +9,7 @@ from settings import SCROLL_PAUSE_TIME, DRIVER_PATH, RESPONE_INIT_PAUSE, EVENT_T
 from db import Base, get_db
 from sqlalchemy import select
 from models import GameSchema, CoeffSchema
-from datetime import datetime
+from datetime import datetime, timedelta
 
 
 class LeonParser:
@@ -56,18 +56,21 @@ class LeonParser:
         containers = soup.find_all(class_="group--shown")
         print(f"| containers found:", len(containers))
         dota_events = []
-        for event in containers:
-            if not event:
+        for container in containers:
+            if not container:
                 continue
             try:
+                if not container.div.div:
+                    empty_g=empty_g+1
+                else:
+                    fully_g=fully_g+1
                 if remove_heads:
-                    head_containers = event.find_all(class_="sport-event-list-sport-headline")
+                    head_containers = container.find_all(class_="sport-event-list-sport-headline")
                     for head in head_containers:
                         head.clear()
                 # check international
-                if EVENT_TITLE in str(event):
-                    dota_events.append(event)
-                fully_g=+1
+                if EVENT_TITLE in str(container):
+                    dota_events.append(container)
             except AttributeError:
                 empty_g=empty_g+1
         print(f'|  empty:', empty_g)
@@ -77,9 +80,11 @@ class LeonParser:
 
     @staticmethod
     def get_data_from_dota_events(dota_events):
-        ev_num=0
+        ev_num = 0
+        
         for container in dota_events:
             dota_games = container.find_all(class_="sport-event-list-item__block")
+            add_g = add_c = 0
             ev_num=ev_num+1
             for game in dota_games:
                 # get team names
@@ -88,7 +93,7 @@ class LeonParser:
                 )
                 t_one_name, t_two_name = [i.text.strip() for i in titles]
                 with get_db() as session:
-
+                    # проверяем, есть ли запись игры в БД
                     game_schema: GameSchema = (
                         (
                             session.execute(
@@ -101,16 +106,19 @@ class LeonParser:
                         .scalars()
                         .one_or_none()
                     )
+                    
                     if game_schema:
                         g_id = game_schema.id
+                    # если игры нет - записываем ее
                     elif not game_schema:
                         new_game = GameSchema(
                             id=uuid4(), team_one=t_one_name, team_two=t_two_name
                         )
                         session.add(new_game)
                         session.commit()
+                        add_g=add_g+1
                         g_id = new_game.id
-                        print(f'|--- *new game:', t_one_name, 'x', t_two_name)
+                        print(f'|    *new game:', t_one_name, 'x', t_two_name)
                     ##print([i.text.strip() for i in titles])
                     # get koef
                     coefs = game.find_all(
@@ -118,21 +126,56 @@ class LeonParser:
                         attrs={"class": "sport-event-list-item-market__coefficient"},
                     )
                     coef_info = [i.text.strip() for i in coefs]
-
-                    if len(coef_info) == 3:
-                        t_one_coef, t_two_coef, _ = coef_info
-                        coef_schema = CoeffSchema(
-                            id=uuid4(),
-                            game_id=g_id,
-                            w_one=t_one_coef,
-                            t="0",
-                            w_two=t_two_coef,
-                            timestamp=datetime.now(),
+                    ##print(coef_info)
+                    t_plus = '0'
+                    for c in coef_info:
+                        if '+' in c:
+                            t_plus = c
+                    coef_info.remove(c)
+                    if len(coef_info) == 0: # [+20] 
+                        t_one_coef = t_two_coef = t_draw = coef_info = '0'
+                    if len(coef_info) == 2: # [1.5,2.5]
+                        t_one_coef, t_two_coef = coef_info
+                        t_draw = '0'
+                    elif len(coef_info) == 3: #[1.5,2.5,1.8]
+                        t_one_coef, t_two_coef, t_draw = coef_info
+                    
+                    # Проверяем есть ли запись коэффициента в db
+                    
+                    coef_schema: CoeffSchema = (
+                        (
+                            session.execute(
+                                select(CoeffSchema).where(
+                                    CoeffSchema.game_id == g_id,
+                                    CoeffSchema.w_one == t_one_coef,
+                                    CoeffSchema.draw == t_draw,
+                                    CoeffSchema.w_two == t_two_coef,
+                                    CoeffSchema.plus == t_plus,
+                                )
+                            )
                         )
-                        session.add(coef_schema)
-                        session.commit()
+                        .scalars().all()
+                    )
+                    if coef_schema:
+                        _timestamp = coef_schema[-1].timestamp
+                        if datetime.now() - _timestamp < timedelta(minutes=1):
+                            continue
+                    coef_schema = CoeffSchema(
+                        game_id=g_id,
+                        w_one=t_one_coef,
+                        draw=t_draw,
+                        w_two=t_two_coef,
+                        plus=t_plus,
+                        timestamp=datetime.now(),
+                        id=uuid4()
+                    )
+                    session.add(coef_schema)
+                    session.commit()
+                    add_c=add_c+1
+                    ##------------------------
                         
-            print(f'|-> ev[',ev_num,']:> games uploaded to db:', len(dota_games))
+            if add_g != 0: print(f'|---> ev[',ev_num,']:> new games writed:', add_g)
+            if add_c != 0: print(f'|----> ev[',ev_num,']:> new coeffs writed:', add_c)
 
     def run(self):
         uptime = datetime.now()
@@ -143,7 +186,7 @@ class LeonParser:
         # скролл страницы, чтобы она прогрузилась полностью
         try:
             self._load_full_page()
-            for cnt in range(1,4):
+            for cnt in range(1,15):
                 start_time = time.time()
                 print(f'\nIteration ', cnt,' started at ', datetime.now())
                 dota_events = self.find_dota_events()
@@ -153,7 +196,7 @@ class LeonParser:
                 time.sleep(1+cnt%2)      
         finally:
             self.browser.quit()
-            
+
 
 if __name__ == "__main__":
     Base.metadata.drop_all()
