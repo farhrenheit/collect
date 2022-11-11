@@ -1,5 +1,5 @@
 import time
-import os
+import logging
 from uuid import uuid4
 from bs4 import BeautifulSoup
 from selenium import webdriver
