@@ -23,7 +23,7 @@ class LeonParser:
     @property
     def _browser(self):
         options = Options()
-        if OS is 'LIN':
+        if OS == 'LIN':
             options.add_argument("--headless")
             options.add_argument("--no-sandbox")
             options.add_argument("--disable-dev-shm-usage")
@@ -96,91 +96,88 @@ class LeonParser:
                     "span", attrs={"class": "sport-event-list-item-competitor__name"}
                 )
                 t_one_name, t_two_name = [i.text.strip() for i in titles]
-                with get_db() as session:
-                    # проверяем, есть ли запись игры в БД
-                    game_schema: GameSchema = (
-                        (
-                            session.execute(
-                                select(GameSchema).where(
-                                    GameSchema.team_one == t_one_name,
-                                    GameSchema.team_two == t_two_name,
-                                )
-                            )
-                        ) # добавить разделение по сериям 
-                        .scalars()
-                        .one_or_none()
-                    )
-                    
-                    if game_schema:
-                        g_id = game_schema.id
-                    # если игры нет - записываем ее
-                    elif not game_schema:
-                        new_game = GameSchema(
-                            id=uuid4(), team_one=t_one_name, team_two=t_two_name
-                        )
-                        session.add(new_game)
-                        session.commit()
-                        add_g=add_g+1
-                        g_id = new_game.id
-                        print(f'|    *new game:', t_one_name, 'x', t_two_name)
-                    ##print([i.text.strip() for i in titles])
-                    # get koef
-                    coefs = game.find_all(
-                        "span",
-                        attrs={"class": "sport-event-list-item-market__coefficient"},
-                    )
-                    coef_info = [i.text.strip() for i in coefs]
-                    ##print(coef_info)
-                    t_plus = '0'
-                    for c in coef_info:
-                        if '+' in c:
-                            t_plus =''.join(filter(str.isdigit,c))
-                            coef_info.remove(c)
-                    if len(coef_info) == 0: # [+20] 
-                        t_one_coef = t_two_coef = t_draw = coef_info = '0'
-                    if len(coef_info) == 2: # [1.5,2.5]
-                        t_one_coef, t_two_coef = coef_info
-                        t_draw = '0'
-                    elif len(coef_info) == 3: #[1.5,2.5,1.8]
-                        t_one_coef, t_two_coef, t_draw = coef_info
-                    
-                    # Проверяем есть ли запись коэффициента в db
-                    
-                    coef_schema: CoeffSchema = (
-                        (
-                            session.execute(
-                                select(CoeffSchema).where(
-                                    CoeffSchema.game_id == g_id,
-                                    CoeffSchema.w_one == t_one_coef,
-                                    CoeffSchema.draw == t_draw,
-                                    CoeffSchema.w_two == t_two_coef,
-                                    CoeffSchema.plus == t_plus,
-                                )
+                game_id = parser.check_write('s_game', [t_one_name, t_two_name])
+                # get koef
+                coefs = game.find_all(
+                    "span",
+                    attrs={"class": "sport-event-list-item-market__coefficient"},
+                )
+                coef_info = [i.text.strip() for i in coefs]
+                coef_info.append(game_id)
+                parser.check_write('coef_by_game', coef_info)
+    
+    def check_write(self, schema, data):
+        with get_db() as session:
+               
+            if schema == 's_game':
+                # проверяем, есть ли запись игры в БД
+                game_schema: GameSchema = (
+                    (
+                        session.execute(
+                            select(GameSchema).where(
+                                GameSchema.team_one == data[0],
+                                        GameSchema.team_two == data[1],
                             )
                         )
-                        .scalars().all()
-                    )
-                    if coef_schema:
-                        _timestamp = coef_schema[-1].timestamp
-                        if datetime.now() - _timestamp < timedelta(minutes=1):
-                            continue
-                    coef_schema = CoeffSchema(
-                        game_id=g_id,
-                        w_one=t_one_coef,
-                        draw=t_draw,
-                        w_two=t_two_coef,
-                        plus=t_plus,
-                        timestamp=datetime.now(),
-                        id=uuid4()
-                    )
-                    session.add(coef_schema)
-                    session.commit()
-                    add_c=add_c+1
-                    ##------------------------
-                        
-            if add_g != 0: print(f'|---> ev[',ev_num,']:> new games writed:', add_g)
-            if add_c != 0: print(f'|----> ev[',ev_num,']:> new coeffs writed:', add_c)
+                    ) # добавить разделение по сериям 
+                    .scalars()
+                    .one_or_none()
+                )
+                if game_schema:
+                    return game_schema.id
+                # если игры нет - записываем ее
+                new_game = GameSchema(
+                    id=uuid4(), team_one=data[0], team_two=data[1]
+                )
+                session.add(new_game)
+                session.commit()
+                print(f'|    *new game:', data[0], 'x', data[1])
+                return new_game.id
 
+            if schema == 'coef_by_game':
+                # придаём коэффициенту структуру для записи в БД
+                if len(data) == 2: # [+20, game_id] 
+                    struct_data = [data[1],None,None,None,''.join(filter(str.isdigit,data[0]))]
+                if len(data) == 3: # [1.5,2.5, game_id]
+                    struct_data = [data[2],data[0],None,data[1],None]
+                elif len(data) == 4: #[1.5,2.5,1.8, game_id]
+                    struct_data = [data[3],data[0],None,data[1],data[2]]
+                elif len(data) == 5: #[1.5,2.5,1.8, +20 game_id]
+                    struct_data = [data[4],data[0],data[1],data[2],''.join(filter(str.isdigit,data[3]))]
+                # Проверяем есть ли запись коэффициента в db
+                coef_schema: CoeffSchema = (
+                    (
+                        session.execute(
+                            select(CoeffSchema).where(
+                                CoeffSchema.game_id == struct_data[0],
+                                CoeffSchema.w_one == struct_data[1],
+                                CoeffSchema.draw == struct_data[2],
+                                CoeffSchema.w_two == struct_data[3],
+                                CoeffSchema.plus == struct_data[4],
+                            )
+                        )
+                    )
+                    .scalars().all()
+                )
+                if coef_schema:
+                    _timestamp = coef_schema[-1].timestamp
+                    if datetime.now() - _timestamp < timedelta(minutes=1):
+                        return print('coef exist')
+                coef_schema = CoeffSchema(
+                    game_id=struct_data[0],
+                    w_one=struct_data[1],
+                    draw=struct_data[2],
+                    w_two=struct_data[3],
+                    plus=struct_data[4],
+                    timestamp=datetime.now(),
+                    id=uuid4()
+                )
+                session.add(coef_schema)
+                session.commit()
+                return coef_schema.id
+                
+            
+            
     def run(self):
         uptime = datetime.now()
         # запрос на урл
