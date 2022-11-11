@@ -5,7 +5,7 @@ from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.remote.webdriver import WebDriver
 from selenium.webdriver.chrome.options import Options
-from settings import SCROLL_PAUSE_TIME, DRIVER_PATH, RESPONE_INIT_PAUSE, EVENT_TITLE
+from settings import SCROLL_PAUSE_TIME, DRIVER_PATH, RESPONE_INIT_PAUSE, EVENT_TITLE, OS, DROP
 from db import Base, get_db
 from sqlalchemy import select
 from models import GameSchema, CoeffSchema
@@ -23,10 +23,11 @@ class LeonParser:
     @property
     def _browser(self):
         options = Options()
-        # options.add_argument("--headless")
-        # options.add_argument("--no-sandbox"))
-        # options.add_argument("--disable-dev-shm-usage")
-        # browser = webdriver.Chrome(executable_path=DRIVER_PATH, options=options)
+        if OS is 'LIN':
+            options.add_argument("--headless")
+            options.add_argument("--no-sandbox")
+            options.add_argument("--disable-dev-shm-usage")
+            browser = webdriver.Chrome(executable_path=DRIVER_PATH, options=options)
         browser = webdriver.Chrome(str(DRIVER_PATH), options=options)
         return browser
 
@@ -105,7 +106,7 @@ class LeonParser:
                                     GameSchema.team_two == t_two_name,
                                 )
                             )
-                        )
+                        ) # добавить разделение по сериям 
                         .scalars()
                         .one_or_none()
                     )
@@ -189,6 +190,7 @@ class LeonParser:
         # скролл страницы, чтобы она прогрузилась полностью
         try:
             self._load_full_page()
+            # запуск парсера
             for cnt in range(1,15):
                 start_time = time.time()
                 print(f'\nIteration ', cnt,' started at ', datetime.now())
@@ -202,7 +204,8 @@ class LeonParser:
 
 
 if __name__ == "__main__":
-    Base.metadata.drop_all()
+    if DROP:
+        Base.metadata.drop_all()
     Base.metadata.create_all()
     parser = LeonParser()
     parser.run()
