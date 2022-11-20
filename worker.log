@@ -1,0 +1,544 @@
+WARNING:root:db was destroyed
+INFO:root:Parsers object was created, running...
+INFO:root:('\nIteration ', 1, ' started at ', datetime.datetime(2022, 11, 17, 1, 51, 13, 927008))
+INFO:root:('Iteration ', 1, ' finished  |  job time: ', 0.24407052993774414, ' |  uptime: ', datetime.timedelta(seconds=11, microseconds=155869))
+INFO:root:('\nIteration ', 2, ' started at ', datetime.datetime(2022, 11, 17, 1, 51, 16, 176856))
+INFO:root:('Iteration ', 2, ' finished  |  job time: ', 0.31557798385620117, ' |  uptime: ', datetime.timedelta(seconds=13, microseconds=477224))
+INFO:root:('\nIteration ', 3, ' started at ', datetime.datetime(2022, 11, 17, 1, 51, 17, 494937))
+INFO:root:('Iteration ', 3, ' finished  |  job time: ', 0.26401519775390625, ' |  uptime: ', datetime.timedelta(seconds=14, microseconds=743742))
+INFO:root:('\nIteration ', 4, ' started at ', datetime.datetime(2022, 11, 17, 1, 51, 19, 795478))
+INFO:root:('Iteration ', 4, ' finished  |  job time: ', 0.2467813491821289, ' |  uptime: ', datetime.timedelta(seconds=17, microseconds=27049))
+INFO:root:('\nIteration ', 5, ' started at ', datetime.datetime(2022, 11, 17, 1, 51, 21, 45812))
+INFO:root:('Iteration ', 5, ' finished  |  job time: ', 0.25273871421813965, ' |  uptime: ', datetime.timedelta(seconds=18, microseconds=283341))
+INFO:root:('\nIteration ', 6, ' started at ', datetime.datetime(2022, 11, 17, 1, 51, 23, 304273))
+INFO:root:('Iteration ', 6, ' finished  |  job time: ', 0.23986029624938965, ' |  uptime: ', datetime.timedelta(seconds=20, microseconds=528923))
+INFO:root:('\nIteration ', 7, ' started at ', datetime.datetime(2022, 11, 17, 1, 51, 24, 548475))
+INFO:root:('Iteration ', 7, ' finished  |  job time: ', 0.24928998947143555, ' |  uptime: ', datetime.timedelta(seconds=21, microseconds=782555))
+WARNING:urllib3.connectionpool:Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', ConnectionResetError(10054, 'Удаленный хост принудительно разорвал существующее подключение', None, 10054, None))': /session/f4cd3c49a0da75425df8d817bd527976
+WARNING:urllib3.connectionpool:Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000002A217DC6B10>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение')': /session/f4cd3c49a0da75425df8d817bd527976
+WARNING:urllib3.connectionpool:Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000002A215E38B10>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение')': /session/f4cd3c49a0da75425df8d817bd527976
+WARNING:root:db was destroyed
+INFO:root:Parsers object was created, running...
+INFO:root:('\nIteration ', 1, ' started at ', datetime.datetime(2022, 11, 17, 1, 53, 40, 471967))
+INFO:root:('Iteration ', 1, ' finished  |  job time: ', 0.38287949562072754, ' |  uptime: ', datetime.timedelta(seconds=11, microseconds=736555))
+INFO:root:('\nIteration ', 2, ' started at ', datetime.datetime(2022, 11, 17, 1, 53, 42, 860329))
+INFO:root:('Iteration ', 2, ' finished  |  job time: ', 0.17562270164489746, ' |  uptime: ', datetime.timedelta(seconds=13, microseconds=917660))
+INFO:root:('\nIteration ', 3, ' started at ', datetime.datetime(2022, 11, 17, 1, 53, 44, 38918))
+INFO:root:('Iteration ', 3, ' finished  |  job time: ', 0.2862823009490967, ' |  uptime: ', datetime.timedelta(seconds=15, microseconds=206908))
+INFO:root:('\nIteration ', 4, ' started at ', datetime.datetime(2022, 11, 17, 1, 53, 46, 327614))
+INFO:root:('Iteration ', 4, ' finished  |  job time: ', 0.2520608901977539, ' |  uptime: ', datetime.timedelta(seconds=17, microseconds=461383))
+INFO:root:('\nIteration ', 5, ' started at ', datetime.datetime(2022, 11, 17, 1, 53, 47, 583728))
+INFO:root:('Iteration ', 5, ' finished  |  job time: ', 0.2794637680053711, ' |  uptime: ', datetime.timedelta(seconds=18, microseconds=744900))
+INFO:root:('\nIteration ', 6, ' started at ', datetime.datetime(2022, 11, 17, 1, 53, 49, 865006))
+INFO:root:('Iteration ', 6, ' finished  |  job time: ', 0.2692837715148926, ' |  uptime: ', datetime.timedelta(seconds=21, microseconds=15998))
+INFO:root:('\nIteration ', 7, ' started at ', datetime.datetime(2022, 11, 17, 1, 53, 51, 139740))
+INFO:root:('Iteration ', 7, ' finished  |  job time: ', 0.27222204208374023, ' |  uptime: ', datetime.timedelta(seconds=22, microseconds=293670))
+INFO:root:('\nIteration ', 8, ' started at ', datetime.datetime(2022, 11, 17, 1, 53, 53, 413711))
+INFO:root:('Iteration ', 8, ' finished  |  job time: ', 0.3055419921875, ' |  uptime: ', datetime.timedelta(seconds=24, microseconds=600961))
+INFO:root:('\nIteration ', 9, ' started at ', datetime.datetime(2022, 11, 17, 1, 53, 54, 723622))
+INFO:root:('Iteration ', 9, ' finished  |  job time: ', 0.2724723815917969, ' |  uptime: ', datetime.timedelta(seconds=25, microseconds=877802))
+INFO:root:('\nIteration ', 10, ' started at ', datetime.datetime(2022, 11, 17, 1, 53, 56, 998382))
+INFO:root:('Iteration ', 10, ' finished  |  job time: ', 0.36719441413879395, ' |  uptime: ', datetime.timedelta(seconds=28, microseconds=247284))
+INFO:root:('\nIteration ', 11, ' started at ', datetime.datetime(2022, 11, 17, 1, 53, 58, 369871))
+INFO:root:('Iteration ', 11, ' finished  |  job time: ', 0.289858341217041, ' |  uptime: ', datetime.timedelta(seconds=29, microseconds=541437))
+INFO:root:('\nIteration ', 12, ' started at ', datetime.datetime(2022, 11, 17, 1, 54, 0, 664862))
+INFO:root:('Iteration ', 12, ' finished  |  job time: ', 0.20808815956115723, ' |  uptime: ', datetime.timedelta(seconds=31, microseconds=754658))
+INFO:root:('\nIteration ', 13, ' started at ', datetime.datetime(2022, 11, 17, 1, 54, 1, 873948))
+INFO:root:('Iteration ', 13, ' finished  |  job time: ', 0.2661783695220947, ' |  uptime: ', datetime.timedelta(seconds=33, microseconds=21834))
+INFO:root:('\nIteration ', 14, ' started at ', datetime.datetime(2022, 11, 17, 1, 54, 4, 141714))
+INFO:root:('Iteration ', 14, ' finished  |  job time: ', 0.18239927291870117, ' |  uptime: ', datetime.timedelta(seconds=35, microseconds=205821))
+WARNING:root:db was destroyed
+INFO:root:Parsers object was created, running...
+INFO:root:('\nIteration ', 1, ' started at ', datetime.datetime(2022, 11, 17, 1, 54, 40, 20448))
+INFO:root:('Iteration ', 1, ' finished  |  job time: ', 0.22192811965942383, ' |  uptime: ', datetime.timedelta(seconds=12, microseconds=203466))
+CRITICAL:root:Python app was closed by Keyboard Interrupt
+WARNING:urllib3.connectionpool:Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', ConnectionResetError(10054, 'Удаленный хост принудительно разорвал существующее подключение', None, 10054, None))': /session/f1a33c5d79393dfd4a6ffff4e0a695ca
+WARNING:urllib3.connectionpool:Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000026ED4808F50>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение')': /session/f1a33c5d79393dfd4a6ffff4e0a695ca
+WARNING:urllib3.connectionpool:Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000026ED4849910>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение')': /session/f1a33c5d79393dfd4a6ffff4e0a695ca
+WARNING:root:db was destroyed
+INFO:root:Parsers object was created, running...
+INFO:root:('\nIteration ', 1, ' started at ', datetime.datetime(2022, 11, 17, 1, 55, 25, 743601))
+INFO:root:('Iteration ', 1, ' finished  |  job time: ', 0.3246912956237793, ' |  uptime: ', datetime.timedelta(seconds=11, microseconds=835285))
+INFO:root:('\nIteration ', 2, ' started at ', datetime.datetime(2022, 11, 17, 1, 55, 28, 73077))
+INFO:root:('Iteration ', 2, ' finished  |  job time: ', 0.21203160285949707, ' |  uptime: ', datetime.timedelta(seconds=14, microseconds=52100))
+CRITICAL:root:Python app was closed by Keyboard Interrupt
+WARNING:urllib3.connectionpool:Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', ConnectionResetError(10054, 'Удаленный хост принудительно разорвал существующее подключение', None, 10054, None))': /session/2fa6f6c24a84cab2d9dfba2e8b8e45ae
+WARNING:urllib3.connectionpool:Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001399B4F5B90>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение')': /session/2fa6f6c24a84cab2d9dfba2e8b8e45ae
+WARNING:urllib3.connectionpool:Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001399B4F73D0>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение')': /session/2fa6f6c24a84cab2d9dfba2e8b8e45ae
+WARNING:root:db was destroyed
+INFO:root:Parsers object was created, running...
+INFO:root:('Iteration ', 1, ' started at ', <built-in method now of type object at 0x00007FFD15D688E0>)
+INFO:root:('Iteration ', 1, ' finished  |  job time: ', 0.292360782623291, ' |  uptime: ', datetime.timedelta(seconds=11, microseconds=527858))
+INFO:root:('Iteration ', 2, ' started at ', <built-in method now of type object at 0x00007FFD15D688E0>)
+INFO:root:('Iteration ', 2, ' finished  |  job time: ', 0.22923684120178223, ' |  uptime: ', datetime.timedelta(seconds=13, microseconds=763899))
+INFO:root:('Iteration ', 3, ' started at ', <built-in method now of type object at 0x00007FFD15D688E0>)
+INFO:root:('Iteration ', 3, ' finished  |  job time: ', 0.263808012008667, ' |  uptime: ', datetime.timedelta(seconds=15, microseconds=31006))
+INFO:root:('Iteration ', 4, ' started at ', <built-in method now of type object at 0x00007FFD15D688E0>)
+INFO:root:('Iteration ', 4, ' finished  |  job time: ', 0.1972639560699463, ' |  uptime: ', datetime.timedelta(seconds=17, microseconds=230191))
+INFO:root:('Iteration ', 5, ' started at ', <built-in method now of type object at 0x00007FFD15D688E0>)
+INFO:root:('Iteration ', 5, ' finished  |  job time: ', 0.25632643699645996, ' |  uptime: ', datetime.timedelta(seconds=18, microseconds=490449))
+INFO:root:('Iteration ', 6, ' started at ', <built-in method now of type object at 0x00007FFD15D688E0>)
+INFO:root:('Iteration ', 6, ' finished  |  job time: ', 0.19998836517333984, ' |  uptime: ', datetime.timedelta(seconds=20, microseconds=695410))
+INFO:root:('Iteration ', 7, ' started at ', <built-in method now of type object at 0x00007FFD15D688E0>)
+INFO:root:('Iteration ', 7, ' finished  |  job time: ', 0.25708746910095215, ' |  uptime: ', datetime.timedelta(seconds=21, microseconds=955257))
+INFO:root:('Iteration ', 8, ' started at ', <built-in method now of type object at 0x00007FFD15D688E0>)
+INFO:root:('Iteration ', 8, ' finished  |  job time: ', 0.25168347358703613, ' |  uptime: ', datetime.timedelta(seconds=24, microseconds=210658))
+CRITICAL:root:Python app was closed by Keyboard Interrupt
+WARNING:urllib3.connectionpool:Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', ConnectionResetError(10054, 'Удаленный хост принудительно разорвал существующее подключение', None, 10054, None))': /session/4a967704c7e340900def3f2b986e8610
+WARNING:urllib3.connectionpool:Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000013B2997FED0>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение')': /session/4a967704c7e340900def3f2b986e8610
+WARNING:urllib3.connectionpool:Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000013B2997F1D0>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение')': /session/4a967704c7e340900def3f2b986e8610
+WARNING:root:db was destroyed
+INFO:root:Parsers object was created, running...
+INFO:root:None
+INFO:root:('Iteration ', 1, ' finished  |  job time: ', 0.24074697494506836, ' |  uptime: ', datetime.timedelta(seconds=12, microseconds=428246))
+INFO:root:None
+INFO:root:('Iteration ', 2, ' finished  |  job time: ', 0.14363312721252441, ' |  uptime: ', datetime.timedelta(seconds=14, microseconds=574156))
+INFO:root:None
+INFO:root:('Iteration ', 3, ' finished  |  job time: ', 0.24290251731872559, ' |  uptime: ', datetime.timedelta(seconds=15, microseconds=820028))
+INFO:root:None
+INFO:root:('Iteration ', 4, ' finished  |  job time: ', 0.27629733085632324, ' |  uptime: ', datetime.timedelta(seconds=18, microseconds=99983))
+INFO:root:None
+INFO:root:('Iteration ', 5, ' finished  |  job time: ', 0.2277815341949463, ' |  uptime: ', datetime.timedelta(seconds=19, microseconds=332403))
+INFO:root:None
+INFO:root:('Iteration ', 6, ' finished  |  job time: ', 0.1841442584991455, ' |  uptime: ', datetime.timedelta(seconds=21, microseconds=521137))
+CRITICAL:root:Python app was closed by Keyboard Interrupt
+WARNING:urllib3.connectionpool:Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', ConnectionResetError(10054, 'Удаленный хост принудительно разорвал существующее подключение', None, 10054, None))': /session/d24f6eeae1495b96fa5cbaccae15fd6b
+WARNING:urllib3.connectionpool:Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000027D538619D0>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение')': /session/d24f6eeae1495b96fa5cbaccae15fd6b
+WARNING:urllib3.connectionpool:Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000027D53862650>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение')': /session/d24f6eeae1495b96fa5cbaccae15fd6b
+WARNING:root:db was destroyed
+INFO:root:Parsers object was created, running...
+WARNING:root:db was destroyed
+INFO:root:Parsers object was created, running...
+WARNING:root:db was destroyed
+INFO:root:Parsers object was created, running...
+CRITICAL:root:Python app was closed by Keyboard Interrupt
+WARNING:urllib3.connectionpool:Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', ConnectionResetError(10054, 'Удаленный хост принудительно разорвал существующее подключение', None, 10054, None))': /session/4992864dfe706a95fb34e6eabeac00a5
+WARNING:urllib3.connectionpool:Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001F57C65B5D0>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение')': /session/4992864dfe706a95fb34e6eabeac00a5
+WARNING:urllib3.connectionpool:Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001F57A7A8990>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение')': /session/4992864dfe706a95fb34e6eabeac00a5
+WARNING:root:db was destroyed
+INFO:root:Parsers object was created, running...
+INFO:root:Iteration 2022-11-20 17:58:01.611751 started at 
+INFO:root:Iteration 2022-11-20 17:58:04.116596 started at 
+INFO:root:Iteration 2022-11-20 17:58:05.379171 started at 
+INFO:root:Iteration 2022-11-20 17:58:07.630275 started at 
+INFO:root:Iteration 2022-11-20 17:58:08.886533 started at 
+CRITICAL:root:Python app was closed by Keyboard Interrupt
+WARNING:urllib3.connectionpool:Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', ConnectionResetError(10054, 'Удаленный хост принудительно разорвал существующее подключение', None, 10054, None))': /session/d0b237c538a4d41593bcb8a868a333fe
+WARNING:urllib3.connectionpool:Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000002818A2C5CD0>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение')': /session/d0b237c538a4d41593bcb8a868a333fe
+WARNING:urllib3.connectionpool:Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000002818A2C5090>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение')': /session/d0b237c538a4d41593bcb8a868a333fe
+WARNING:root:db was destroyed
+INFO:root:Parsers object was created, running...
+INFO:root:Iteration 2022-11-20 18:00:50.839867 started at 
+INFO:root:Iteration 2022-11-20 18:00:53.229948 started at 
+INFO:root:Iteration 2022-11-20 18:00:54.469351 started at 
+INFO:root:Iteration 2022-11-20 18:00:56.750210 started at 
+INFO:root:Iteration 2022-11-20 18:00:57.985585 started at 
+INFO:root:Iteration 2022-11-20 18:01:00.250277 started at 
+INFO:root:Iteration 2022-11-20 18:01:01.541879 started at 
+INFO:root:Iteration 2022-11-20 18:01:03.852328 started at 
+INFO:root:Iteration 2022-11-20 18:01:05.136897 started at 
+INFO:root:Iteration 2022-11-20 18:01:07.481339 started at 
+INFO:root:Iteration 2022-11-20 18:01:08.745924 started at 
+INFO:root:Iteration 2022-11-20 18:01:11.133913 started at 
+INFO:root:Iteration 2022-11-20 18:01:12.436322 started at 
+INFO:root:Iteration 2022-11-20 18:01:14.649973 started at 
+CRITICAL:root:Python app was closed by Keyboard Interrupt
+WARNING:urllib3.connectionpool:Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', ConnectionResetError(10054, 'Удаленный хост принудительно разорвал существующее подключение', None, 10054, None))': /session/3a42b5e2b48ffa777a2f92cfd8f30498
+WARNING:urllib3.connectionpool:Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000016AA56C8B90>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение')': /session/3a42b5e2b48ffa777a2f92cfd8f30498
+WARNING:urllib3.connectionpool:Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000016AA6F04610>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение')': /session/3a42b5e2b48ffa777a2f92cfd8f30498
+WARNING:root:db was destroyed
+INFO:root:Parsers object was created, running...
+INFO:root:Iteration 2022-11-20 18:01:52.956934 started at 
+INFO:root:Iteration 2022-11-20 18:01:55.303036 started at 
+INFO:root:Iteration 2022-11-20 18:01:56.579911 started at 
+INFO:root:Iteration 2022-11-20 18:01:58.916438 started at 
+CRITICAL:root:Python app was closed by Keyboard Interrupt
+WARNING:urllib3.connectionpool:Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', ConnectionResetError(10054, 'Удаленный хост принудительно разорвал существующее подключение', None, 10054, None))': /session/aa156572790d04b7133e94f6c351f7a5
+WARNING:urllib3.connectionpool:Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000158AED11C50>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение')': /session/aa156572790d04b7133e94f6c351f7a5
+WARNING:urllib3.connectionpool:Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000158AED13C90>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение')': /session/aa156572790d04b7133e94f6c351f7a5
+WARNING:root:db was destroyed
+INFO:root:Parsers object was created, running...
+INFO:root:Iteration 2022-11-20 18:04:15.250490 started at 
+INFO:root:Iteration 1 finished  |  job time:  0.3712284564971924 |  uptime:  0:00:13.574747 
+INFO:root:Iteration 2022-11-20 18:04:17.627940 started at 
+INFO:root:Iteration 2 finished  |  job time:  0.26073718070983887 |  uptime:  0:00:15.841706 
+INFO:root:Iteration 2022-11-20 18:04:18.896128 started at 
+INFO:root:Iteration 3 finished  |  job time:  0.2749631404876709 |  uptime:  0:00:17.123691 
+INFO:root:Iteration 2022-11-20 18:04:21.172573 started at 
+INFO:root:Iteration 4 finished  |  job time:  0.2987682819366455 |  uptime:  0:00:19.424371 
+INFO:root:Iteration 2022-11-20 18:04:22.476449 started at 
+INFO:root:Iteration 5 finished  |  job time:  0.24279499053955078 |  uptime:  0:00:20.672273 
+INFO:root:Iteration 2022-11-20 18:04:24.726776 started at 
+INFO:root:Iteration 6 finished  |  job time:  0.3420135974884033 |  uptime:  0:00:23.021818 
+CRITICAL:root:Python app was closed by Keyboard Interrupt
+WARNING:urllib3.connectionpool:Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', ConnectionResetError(10054, 'Удаленный хост принудительно разорвал существующее подключение', None, 10054, None))': /session/c6e03d76f848a466a999790e42968ed5
+WARNING:urllib3.connectionpool:Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001A115C06210>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение')': /session/c6e03d76f848a466a999790e42968ed5
+WARNING:urllib3.connectionpool:Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001A115C078D0>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение')': /session/c6e03d76f848a466a999790e42968ed5
+WARNING:root:db was destroyed
+INFO:root:Parsers object was created, running...
+INFO:root:Iteration 2022-11-20 18:06:15.414462 started at 
+INFO:root:Iteration 1 finished  |  job time:  0.3173208236694336 |  uptime:  0:00:12.586422 
+INFO:root:Iteration 2022-11-20 18:06:17.738934 started at 
+INFO:root:Iteration 2 finished  |  job time:  0.3459815979003906 |  uptime:  0:00:14.942547 
+INFO:root:Iteration 2022-11-20 18:06:19.090528 started at 
+INFO:root:Iteration 3 finished  |  job time:  0.2372722625732422 |  uptime:  0:00:16.182439 
+INFO:root:Iteration 2022-11-20 18:06:21.335000 started at 
+INFO:root:Iteration 4 finished  |  job time:  0.24246573448181152 |  uptime:  0:00:18.432104 
+INFO:root:Iteration 2022-11-20 18:06:22.585964 started at 
+INFO:root:Iteration 5 finished  |  job time:  0.22870135307312012 |  uptime:  0:00:19.669305 
+INFO:root:Iteration 2022-11-20 18:06:24.821406 started at 
+INFO:root:Iteration 6 finished  |  job time:  0.3545057773590088 |  uptime:  0:00:22.030551 
+INFO:root:Iteration 2022-11-20 18:06:26.183871 started at 
+INFO:root:Iteration 7 finished  |  job time:  0.2646174430847168 |  uptime:  0:00:23.302588 
+CRITICAL:root:Python app was closed by Keyboard Interrupt
+WARNING:urllib3.connectionpool:Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', ConnectionResetError(10054, 'Удаленный хост принудительно разорвал существующее подключение', None, 10054, None))': /session/7e7cad9bd96cae3cad834f822e94d5eb
+WARNING:urllib3.connectionpool:Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001E6003F3F90>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение')': /session/7e7cad9bd96cae3cad834f822e94d5eb
+WARNING:urllib3.connectionpool:Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001E6005D56D0>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение')': /session/7e7cad9bd96cae3cad834f822e94d5eb
+WARNING:root:db was destroyed
+INFO:root:Browser was init with IS_LIN_OS: False
+INFO:root:Parsers object was created, running...
+INFO:root:Iteration 2022-11-20 18:07:31.672159 started at 
+INFO:root:Iteration 1 finished  |  job time:  0.40729260444641113 |  uptime:  0:00:12.933969 
+INFO:root:Iteration 2022-11-20 18:07:34.088313 started at 
+INFO:root:Iteration 2 finished  |  job time:  0.19465923309326172 |  uptime:  0:00:15.133488 
+INFO:root:Iteration 2022-11-20 18:07:35.289730 started at 
+INFO:root:Iteration 3 finished  |  job time:  0.21676063537597656 |  uptime:  0:00:16.357007 
+INFO:root:Iteration 2022-11-20 18:07:37.513899 started at 
+INFO:root:Iteration 4 finished  |  job time:  0.20196771621704102 |  uptime:  0:00:18.566383 
+INFO:root:Iteration 2022-11-20 18:07:38.722194 started at 
+INFO:root:Iteration 5 finished  |  job time:  0.29674530029296875 |  uptime:  0:00:19.869287 
+INFO:root:Iteration 2022-11-20 18:07:41.023852 started at 
+INFO:root:Iteration 6 finished  |  job time:  0.27504682540893555 |  uptime:  0:00:22.149415 
+INFO:root:Iteration 2022-11-20 18:07:42.304738 started at 
+INFO:root:Iteration 7 finished  |  job time:  0.21275043487548828 |  uptime:  0:00:23.368004 
+INFO:root:Iteration 2022-11-20 18:07:44.522263 started at 
+INFO:root:Iteration 8 finished  |  job time:  0.3507416248321533 |  uptime:  0:00:25.723520 
+INFO:root:Iteration 2022-11-20 18:07:45.878177 started at 
+INFO:root:Iteration 9 finished  |  job time:  0.39640331268310547 |  uptime:  0:00:27.125097 
+INFO:root:Iteration 2022-11-20 18:07:48.277254 started at 
+INFO:root:Iteration 10 finished  |  job time:  0.23729991912841797 |  uptime:  0:00:29.364531 
+INFO:root:Iteration 2022-11-20 18:07:49.522023 started at 
+INFO:root:Iteration 11 finished  |  job time:  0.3309776782989502 |  uptime:  0:00:30.705181 
+INFO:root:Iteration 2022-11-20 18:07:51.856076 started at 
+INFO:root:Iteration 12 finished  |  job time:  0.34470129013061523 |  uptime:  0:00:33.051293 
+INFO:root:Iteration 2022-11-20 18:07:53.206393 started at 
+INFO:root:Iteration 13 finished  |  job time:  0.23008990287780762 |  uptime:  0:00:34.286998 
+INFO:root:Iteration 2022-11-20 18:07:55.438043 started at 
+INFO:root:Iteration 14 finished  |  job time:  0.21930241584777832 |  uptime:  0:00:36.507862 
+WARNING:root:db was destroyed
+INFO:root:Browser was init with IS_LIN_OS: False
+INFO:root:Parsers object was created, running...
+INFO:root:Iteration 2022-11-20 18:24:21.999655 started at 
+INFO:root:Iteration 1 finished  |  job time:  0.25549817085266113 |  uptime:  0:00:09.413226 
+INFO:root:Iteration 2022-11-20 18:24:24.261207 started at 
+INFO:root:Iteration 2 finished  |  job time:  0.22769808769226074 |  uptime:  0:00:11.646978 
+INFO:root:Iteration 2022-11-20 18:24:25.498151 started at 
+INFO:root:Iteration 3 finished  |  job time:  0.1641092300415039 |  uptime:  0:00:12.820333 
+INFO:root:Iteration 2022-11-20 18:24:27.669677 started at 
+INFO:root:Iteration 4 finished  |  job time:  0.2953939437866211 |  uptime:  0:00:15.123144 
+INFO:root:Iteration 2022-11-20 18:24:28.972746 started at 
+INFO:root:Iteration 5 finished  |  job time:  0.2958202362060547 |  uptime:  0:00:16.426639 
+INFO:root:Iteration 2022-11-20 18:24:31.270931 started at 
+INFO:root:Iteration 6 finished  |  job time:  0.2578623294830322 |  uptime:  0:00:18.686866 
+INFO:root:Iteration 2022-11-20 18:24:32.536236 started at 
+INFO:root:Iteration 7 finished  |  job time:  0.24261736869812012 |  uptime:  0:00:19.933865 
+INFO:root:Iteration 2022-11-20 18:24:34.786804 started at 
+INFO:root:Iteration 8 finished  |  job time:  0.21834611892700195 |  uptime:  0:00:22.163223 
+INFO:root:Iteration 2022-11-20 18:24:36.011331 started at 
+INFO:root:Iteration 9 finished  |  job time:  0.4309701919555664 |  uptime:  0:00:23.600374 
+INFO:root:Iteration 2022-11-20 18:24:38.443612 started at 
+INFO:root:Iteration 10 finished  |  job time:  0.19425225257873535 |  uptime:  0:00:25.795937 
+INFO:root:Iteration 2022-11-20 18:24:39.644706 started at 
+INFO:root:Iteration 11 finished  |  job time:  0.23652315139770508 |  uptime:  0:00:27.039302 
+INFO:root:Iteration 2022-11-20 18:24:41.889623 started at 
+INFO:root:Iteration 12 finished  |  job time:  0.20403838157653809 |  uptime:  0:00:29.251735 
+INFO:root:Iteration 2022-11-20 18:24:43.100348 started at 
+INFO:root:Iteration 13 finished  |  job time:  0.1506812572479248 |  uptime:  0:00:30.408583 
+INFO:root:Iteration 2022-11-20 18:24:45.258443 started at 
+INFO:root:Iteration 14 finished  |  job time:  0.3172450065612793 |  uptime:  0:00:32.733761 
+CRITICAL:root:Python app was closed by Keyboard Interrupt
+WARNING:root:db was destroyed
+INFO:root:Browser was init with IS_LIN_OS: False
+INFO:root:Parsers object was created, running...
+WARNING:root:db was destroyed
+INFO:root:Browser was init with IS_LIN_OS: False
+INFO:root:Parsers object was created, running...
+CRITICAL:root:JS scrollHeight Exception: Message: javascript error: Cannot read properties of null (reading 'scrollHeight')
+  (Session info: chrome=107.0.5304.107)
+Stacktrace:
+Backtrace:
+	Ordinal0 [0x00E4ACD3+2075859]
+	Ordinal0 [0x00DDEE61+1633889]
+	Ordinal0 [0x00CDB7BD+571325]
+	Ordinal0 [0x00CDE374+582516]
+	Ordinal0 [0x00CDE225+582181]
+	Ordinal0 [0x00CDEBA5+584613]
+	Ordinal0 [0x00D3BF4F+966479]
+	Ordinal0 [0x00D2731C+881436]
+	Ordinal0 [0x00D3B56A+963946]
+	Ordinal0 [0x00D27136+880950]
+	Ordinal0 [0x00CFFEFD+720637]
+	Ordinal0 [0x00D00F3F+724799]
+	GetHandleVerifier [0x010FEED2+2769538]
+	GetHandleVerifier [0x010F0D95+2711877]
+	GetHandleVerifier [0x00EDA03A+521194]
+	GetHandleVerifier [0x00ED8DA0+516432]
+	Ordinal0 [0x00DE682C+1665068]
+	Ordinal0 [0x00DEB128+1683752]
+	Ordinal0 [0x00DEB215+1683989]
+	Ordinal0 [0x00DF6484+1729668]
+	BaseThreadInitThunk [0x75E46939+25]
+	RtlGetFullPathName_UEx [0x774D8FD2+1218]
+	RtlGetFullPathName_UEx [0x774D8F9D+1165]
+ 
+WARNING:root:db was destroyed
+INFO:root:Browser was init with IS_LIN_OS: False
+INFO:root:Parsers object was created, running...
+INFO:root:Iteration 2022-11-20 18:35:52.898590 started at 
+INFO:root:Iteration 1 finished  |  job time:  0.0070247650146484375 |  uptime:  0:00:05.910543 
+INFO:root:Iteration 2022-11-20 18:35:54.911022 started at 
+INFO:root:Iteration 2 finished  |  job time:  0.010196208953857422 |  uptime:  0:00:07.925626 
+INFO:root:Iteration 2022-11-20 18:35:55.924531 started at 
+INFO:root:Iteration 3 finished  |  job time:  0.01390528678894043 |  uptime:  0:00:08.943364 
+INFO:root:Iteration 2022-11-20 18:35:57.949932 started at 
+INFO:root:Iteration 4 finished  |  job time:  0.04127025604248047 |  uptime:  0:00:10.987477 
+INFO:root:Iteration 2022-11-20 18:35:58.986644 started at 
+INFO:root:Iteration 5 finished  |  job time:  0.007718324661254883 |  uptime:  0:00:11.999290 
+INFO:root:Iteration 2022-11-20 18:36:00.995985 started at 
+INFO:root:Iteration 6 finished  |  job time:  0.011567831039428711 |  uptime:  0:00:14.013520 
+INFO:root:Iteration 2022-11-20 18:36:02.009951 started at 
+INFO:root:Iteration 7 finished  |  job time:  0.00889277458190918 |  uptime:  0:00:15.023771 
+INFO:root:Iteration 2022-11-20 18:36:04.023276 started at 
+INFO:root:Iteration 8 finished  |  job time:  0.013886690139770508 |  uptime:  0:00:17.042091 
+INFO:root:Iteration 2022-11-20 18:36:05.042454 started at 
+INFO:root:Iteration 9 finished  |  job time:  0.012619495391845703 |  uptime:  0:00:18.060002 
+INFO:root:Iteration 2022-11-20 18:36:07.057990 started at 
+INFO:root:Iteration 10 finished  |  job time:  0.011832952499389648 |  uptime:  0:00:20.075761 
+INFO:root:Iteration 2022-11-20 18:36:08.072561 started at 
+INFO:root:Iteration 11 finished  |  job time:  0.0125274658203125 |  uptime:  0:00:21.089479 
+INFO:root:Iteration 2022-11-20 18:36:10.086363 started at 
+INFO:root:Iteration 12 finished  |  job time:  0.012187957763671875 |  uptime:  0:00:23.103479 
+INFO:root:Iteration 2022-11-20 18:36:11.101624 started at 
+INFO:root:Iteration 13 finished  |  job time:  0.010426998138427734 |  uptime:  0:00:24.116979 
+INFO:root:Iteration 2022-11-20 18:36:13.115733 started at 
+INFO:root:Iteration 14 finished  |  job time:  0.0032873153686523438 |  uptime:  0:00:26.123948 
+WARNING:root:db was destroyed
+INFO:root:Browser was init with IS_LIN_OS: False
+INFO:root:Parsers object was created, running...
+INFO:root:Iteration 2022-11-20 18:38:35.777686 started at 
+INFO:root:Iteration 1 finished  |  job time:  0.1235511302947998 |  uptime:  0:00:08.907092 
+INFO:root:Iteration 2022-11-20 18:38:37.909062 started at 
+INFO:root:Iteration 2 finished  |  job time:  0.11407232284545898 |  uptime:  0:00:11.028988 
+INFO:root:Iteration 2022-11-20 18:38:39.031528 started at 
+INFO:root:Iteration 3 finished  |  job time:  0.10152769088745117 |  uptime:  0:00:12.138910 
+INFO:root:Iteration 2022-11-20 18:38:41.136676 started at 
+INFO:root:Iteration 4 finished  |  job time:  0.13330793380737305 |  uptime:  0:00:14.275838 
+INFO:root:Iteration 2022-11-20 18:38:42.271727 started at 
+INFO:root:Iteration 5 finished  |  job time:  0.1290273666381836 |  uptime:  0:00:15.406608 
+INFO:root:Iteration 2022-11-20 18:38:44.408022 started at 
+INFO:root:Iteration 6 finished  |  job time:  0.09160494804382324 |  uptime:  0:00:17.505481 
+INFO:root:Iteration 2022-11-20 18:38:45.502358 started at 
+INFO:root:Iteration 7 finished  |  job time:  0.10349035263061523 |  uptime:  0:00:18.611703 
+INFO:root:Iteration 2022-11-20 18:38:47.607096 started at 
+INFO:root:Iteration 8 finished  |  job time:  0.11126303672790527 |  uptime:  0:00:20.724213 
+INFO:root:Iteration 2022-11-20 18:38:48.720371 started at 
+INFO:root:Iteration 9 finished  |  job time:  0.11379623413085938 |  uptime:  0:00:21.840022 
+INFO:root:Iteration 2022-11-20 18:38:50.835654 started at 
+INFO:root:Iteration 10 finished  |  job time:  0.11922812461853027 |  uptime:  0:00:23.961794 
+INFO:root:Iteration 2022-11-20 18:38:51.963853 started at 
+INFO:root:Iteration 11 finished  |  job time:  0.09083867073059082 |  uptime:  0:00:25.057654 
+INFO:root:Iteration 2022-11-20 18:38:54.056720 started at 
+INFO:root:Iteration 12 finished  |  job time:  0.10205554962158203 |  uptime:  0:00:27.164629 
+INFO:root:Iteration 2022-11-20 18:38:55.163723 started at 
+INFO:root:Iteration 13 finished  |  job time:  0.10944652557373047 |  uptime:  0:00:28.279023 
+INFO:root:Iteration 2022-11-20 18:38:57.278482 started at 
+INFO:root:Iteration 14 finished  |  job time:  0.1284348964691162 |  uptime:  0:00:30.412201 
+WARNING:root:db was destroyed
+INFO:root:Browser was init with IS_LIN_OS: False
+INFO:root:Parsers object was created, running...
+INFO:root:Iteration 2022-11-20 18:43:57.721891 started at 
+INFO:root:Iteration 1 finished  |  job time:  0.07627439498901367 |  uptime:  0:00:08.935428 
+INFO:root:Iteration 2022-11-20 18:43:59.805144 started at 
+INFO:root:Iteration 2 finished  |  job time:  0.11445021629333496 |  uptime:  0:00:11.056857 
+INFO:root:Iteration 2022-11-20 18:44:00.924123 started at 
+INFO:root:Iteration 3 finished  |  job time:  0.11533212661743164 |  uptime:  0:00:12.176718 
+INFO:root:Iteration 2022-11-20 18:44:03.045284 started at 
+INFO:root:Iteration 4 finished  |  job time:  0.128950834274292 |  uptime:  0:00:14.310465 
+INFO:root:Iteration 2022-11-20 18:44:04.179863 started at 
+INFO:root:Iteration 5 finished  |  job time:  0.10909748077392578 |  uptime:  0:00:15.426223 
+INFO:root:Iteration 2022-11-20 18:44:06.290588 started at 
+INFO:root:Iteration 6 finished  |  job time:  0.08249878883361816 |  uptime:  0:00:17.510350 
+INFO:root:Iteration 2022-11-20 18:44:07.376327 started at 
+INFO:root:Iteration 7 finished  |  job time:  0.1272735595703125 |  uptime:  0:00:18.640864 
+INFO:root:Iteration 2022-11-20 18:44:09.509427 started at 
+INFO:root:Iteration 8 finished  |  job time:  0.12923097610473633 |  uptime:  0:00:20.775921 
+INFO:root:Iteration 2022-11-20 18:44:10.645787 started at 
+INFO:root:Iteration 9 finished  |  job time:  0.11152911186218262 |  uptime:  0:00:21.894306 
+INFO:root:Iteration 2022-11-20 18:44:12.763704 started at 
+INFO:root:Iteration 10 finished  |  job time:  0.10898494720458984 |  uptime:  0:00:24.009952 
+INFO:root:Iteration 2022-11-20 18:44:13.874980 started at 
+INFO:root:Iteration 11 finished  |  job time:  0.10389280319213867 |  uptime:  0:00:25.115977 
+INFO:root:Iteration 2022-11-20 18:44:15.981124 started at 
+INFO:root:Iteration 12 finished  |  job time:  0.11993575096130371 |  uptime:  0:00:27.238322 
+INFO:root:Iteration 2022-11-20 18:44:17.101922 started at 
+INFO:root:Iteration 13 finished  |  job time:  0.08602380752563477 |  uptime:  0:00:28.325209 
+INFO:root:Iteration 2022-11-20 18:44:19.195122 started at 
+INFO:root:Iteration 14 finished  |  job time:  0.10412263870239258 |  uptime:  0:00:30.436508 
+WARNING:root:db was destroyed
+INFO:root:Browser was init with IS_LIN_OS: False
+INFO:root:Parsers object was created, running...
+WARNING:root:db was destroyed
+INFO:root:Browser was init with IS_LIN_OS: False
+INFO:root:Parsers object was created, running...
+WARNING:root:db was destroyed
+INFO:root:Browser was init with IS_LIN_OS: False
+INFO:root:Parsers object was created, running...
+WARNING:root:db was destroyed
+INFO:root:Browser was init with IS_LIN_OS: False
+INFO:root:Parsers object was created, running...
+WARNING:root:db was destroyed
+INFO:root:Browser was init with IS_LIN_OS: False
+INFO:root:Parsers object was created, running...
+INFO:root:Iteration 2022-11-20 20:38:14.846193 started at 
+INFO:root:Iteration 1 finished  |  job time:  0.08200907707214355 |  uptime:  0:00:06.815729 
+INFO:root:Iteration 2022-11-20 20:38:16.929417 started at 
+INFO:root:Iteration 2 finished  |  job time:  0.07301020622253418 |  uptime:  0:00:08.889954 
+INFO:root:Iteration 2022-11-20 20:38:18.002900 started at 
+INFO:root:Iteration 3 finished  |  job time:  0.09601235389709473 |  uptime:  0:00:09.986439 
+INFO:root:Iteration 2022-11-20 20:38:20.099589 started at 
+INFO:root:Iteration 4 finished  |  job time:  0.0750126838684082 |  uptime:  0:00:12.062128 
+INFO:root:Iteration 2022-11-20 20:38:21.176170 started at 
+INFO:root:Iteration 5 finished  |  job time:  0.0740060806274414 |  uptime:  0:00:13.137702 
+INFO:root:Iteration 2022-11-20 20:38:23.251907 started at 
+INFO:root:Iteration 6 finished  |  job time:  0.07799625396728516 |  uptime:  0:00:15.217430 
+INFO:root:Iteration 2022-11-20 20:38:24.330732 started at 
+INFO:root:Iteration 7 finished  |  job time:  0.07204604148864746 |  uptime:  0:00:16.290305 
+INFO:root:Iteration 2022-11-20 20:38:26.403538 started at 
+INFO:root:Iteration 8 finished  |  job time:  0.08300352096557617 |  uptime:  0:00:18.374069 
+INFO:root:Iteration 2022-11-20 20:38:27.488221 started at 
+INFO:root:Iteration 9 finished  |  job time:  0.07400679588317871 |  uptime:  0:00:19.449755 
+INFO:root:Iteration 2022-11-20 20:38:29.562754 started at 
+INFO:root:Iteration 10 finished  |  job time:  0.07500624656677246 |  uptime:  0:00:21.525288 
+INFO:root:Iteration 2022-11-20 20:38:30.639682 started at 
+INFO:root:Iteration 11 finished  |  job time:  0.2980473041534424 |  uptime:  0:00:22.825256 
+INFO:root:Iteration 2022-11-20 20:38:32.940802 started at 
+WARNING:root:db was destroyed
+INFO:root:Browser was init with IS_LIN_OS: False
+INFO:root:Parsers object was created, running...
+INFO:root:Iteration 2022-11-20 20:38:47.029842 started at 
+INFO:root:Iteration 1 finished  |  job time:  0.22277474403381348 |  uptime:  0:00:06.793326 
+INFO:root:Iteration 2022-11-20 20:38:49.253185 started at 
+INFO:root:Iteration 2 finished  |  job time:  0.1268322467803955 |  uptime:  0:00:08.921726 
+INFO:root:Iteration 2022-11-20 20:38:50.381391 started at 
+INFO:root:Iteration 3 finished  |  job time:  0.11800909042358398 |  uptime:  0:00:10.040109 
+INFO:root:Iteration 2022-11-20 20:38:52.500682 started at 
+INFO:root:Iteration 4 finished  |  job time:  0.12600946426391602 |  uptime:  0:00:12.167401 
+INFO:root:Iteration 2022-11-20 20:38:53.628510 started at 
+INFO:root:Iteration 5 finished  |  job time:  0.11700773239135742 |  uptime:  0:00:13.286227 
+INFO:root:Iteration 2022-11-20 20:38:55.746854 started at 
+INFO:root:Iteration 6 finished  |  job time:  0.11350202560424805 |  uptime:  0:00:15.402064 
+INFO:root:Iteration 2022-11-20 20:38:56.862033 started at 
+INFO:root:Iteration 7 finished  |  job time:  0.13800835609436035 |  uptime:  0:00:16.540751 
+INFO:root:Iteration 2022-11-20 20:38:59.001096 started at 
+INFO:root:Iteration 8 finished  |  job time:  0.12401175498962402 |  uptime:  0:00:18.665817 
+INFO:root:Iteration 2022-11-20 20:39:00.126169 started at 
+INFO:root:Iteration 9 finished  |  job time:  0.12401032447814941 |  uptime:  0:00:19.790888 
+INFO:root:Iteration 2022-11-20 20:39:02.251758 started at 
+INFO:root:Iteration 10 finished  |  job time:  0.11900997161865234 |  uptime:  0:00:21.911477 
+INFO:root:Iteration 2022-11-20 20:39:03.372751 started at 
+INFO:root:Iteration 11 finished  |  job time:  0.11001014709472656 |  uptime:  0:00:23.024470 
+INFO:root:Iteration 2022-11-20 20:39:05.485062 started at 
+INFO:root:Iteration 12 finished  |  job time:  0.17901110649108887 |  uptime:  0:00:25.205784 
+INFO:root:Iteration 2022-11-20 20:39:06.665548 started at 
+INFO:root:Iteration 13 finished  |  job time:  0.11803150177001953 |  uptime:  0:00:26.324289 
+INFO:root:Iteration 2022-11-20 20:39:08.784645 started at 
+INFO:root:Iteration 14 finished  |  job time:  0.17301273345947266 |  uptime:  0:00:28.498367 
+CRITICAL:root:Python app was closed by Keyboard Interrupt
+WARNING:root:db was destroyed
+INFO:root:Browser was init with IS_LIN_OS: False
+INFO:root:Parsers object was created, running...
+INFO:root:Iteration 2022-11-20 20:46:21.948366 started at 
+INFO:root:Iteration 1 finished  |  job time:  0.262021541595459 |  uptime:  0:00:07.028317 
+INFO:root:Iteration 2022-11-20 20:46:24.212596 started at 
+INFO:root:Iteration 2 finished  |  job time:  0.1350116729736328 |  uptime:  0:00:09.165536 
+INFO:root:Iteration 2022-11-20 20:46:25.348322 started at 
+INFO:root:Iteration 3 finished  |  job time:  0.12600970268249512 |  uptime:  0:00:10.292261 
+INFO:root:Iteration 2022-11-20 20:46:27.475363 started at 
+INFO:root:Iteration 4 finished  |  job time:  0.1220085620880127 |  uptime:  0:00:12.416301 
+INFO:root:Iteration 2022-11-20 20:46:28.599356 started at 
+INFO:root:Iteration 5 finished  |  job time:  0.12852787971496582 |  uptime:  0:00:13.545813 
+INFO:root:Iteration 2022-11-20 20:46:30.728602 started at 
+INFO:root:Iteration 6 finished  |  job time:  0.11501622200012207 |  uptime:  0:00:15.662543 
+INFO:root:Iteration 2022-11-20 20:46:31.844942 started at 
+INFO:root:Iteration 7 finished  |  job time:  0.13001132011413574 |  uptime:  0:00:16.792883 
+INFO:root:Iteration 2022-11-20 20:46:33.975886 started at 
+INFO:root:Iteration 8 finished  |  job time:  0.14501142501831055 |  uptime:  0:00:18.938826 
+INFO:root:Iteration 2022-11-20 20:46:35.121532 started at 
+INFO:root:Iteration 9 finished  |  job time:  0.12001705169677734 |  uptime:  0:00:20.060475 
+INFO:root:Iteration 2022-11-20 20:46:37.243324 started at 
+INFO:root:Iteration 10 finished  |  job time:  0.15001726150512695 |  uptime:  0:00:22.212266 
+INFO:root:Iteration 2022-11-20 20:46:38.395149 started at 
+INFO:root:Iteration 11 finished  |  job time:  0.16501450538635254 |  uptime:  0:00:23.379089 
+INFO:root:Iteration 2022-11-20 20:46:40.561447 started at 
+INFO:root:Iteration 12 finished  |  job time:  0.1880202293395996 |  uptime:  0:00:25.567396 
+INFO:root:Iteration 2022-11-20 20:46:41.750128 started at 
+INFO:root:Iteration 13 finished  |  job time:  0.12501120567321777 |  uptime:  0:00:26.693069 
+INFO:root:Iteration 2022-11-20 20:46:43.875821 started at 
+INFO:root:Iteration 14 finished  |  job time:  0.15601181983947754 |  uptime:  0:00:28.849762 
+WARNING:root:db was destroyed
+INFO:root:Browser was init with IS_LIN_OS: False
+INFO:root:Parsers object was created, running...
+INFO:root:Iteration 2022-11-20 20:48:29.718857 started at 
+INFO:root:Iteration 1 finished  |  job time:  0.2960207462310791 |  uptime:  0:00:06.958571 
+INFO:root:Iteration 2022-11-20 20:48:36.014042 started at 
+INFO:root:Iteration 2 finished  |  job time:  0.17205405235290527 |  uptime:  0:00:13.132758 
+INFO:root:Iteration 2022-11-20 20:48:41.188359 started at 
+INFO:root:Iteration 3 finished  |  job time:  0.12500929832458496 |  uptime:  0:00:18.260068 
+INFO:root:Iteration 2022-11-20 20:48:47.315148 started at 
+INFO:root:Iteration 4 finished  |  job time:  0.14001178741455078 |  uptime:  0:00:24.400859 
+INFO:root:Iteration 2022-11-20 20:48:52.456311 started at 
+INFO:root:Iteration 5 finished  |  job time:  0.1425189971923828 |  uptime:  0:00:29.545527 
+INFO:root:Iteration 2022-11-20 20:48:58.601129 started at 
+INFO:root:Iteration 6 finished  |  job time:  0.1200094223022461 |  uptime:  0:00:35.667837 
+INFO:root:Iteration 2022-11-20 20:49:03.722546 started at 
+INFO:root:Iteration 7 finished  |  job time:  0.12125802040100098 |  uptime:  0:00:40.790502 
+INFO:root:Iteration 2022-11-20 20:49:09.845229 started at 
+INFO:root:Iteration 8 finished  |  job time:  0.12500929832458496 |  uptime:  0:00:46.915937 
+INFO:root:Iteration 2022-11-20 20:49:14.971169 started at 
+INFO:root:Iteration 9 finished  |  job time:  0.11216568946838379 |  uptime:  0:00:52.029034 
+INFO:root:Iteration 2022-11-20 20:49:21.084743 started at 
+INFO:root:Iteration 10 finished  |  job time:  0.12601089477539062 |  uptime:  0:00:58.157452 
+INFO:root:Iteration 2022-11-20 20:49:26.212969 started at 
+INFO:root:Iteration 11 finished  |  job time:  0.14000892639160156 |  uptime:  0:01:03.298677 
+INFO:root:Iteration 2022-11-20 20:49:32.353856 started at 
+INFO:root:Iteration 12 finished  |  job time:  0.21794557571411133 |  uptime:  0:01:09.517500 
+INFO:root:Iteration 2022-11-20 20:49:37.572984 started at 
+INFO:root:Iteration 13 finished  |  job time:  0.11301565170288086 |  uptime:  0:01:14.631698 
+INFO:root:Iteration 2022-11-20 20:49:43.687272 started at 
+INFO:root:Iteration 14 finished  |  job time:  0.11742925643920898 |  uptime:  0:01:20.750401 
+WARNING:root:db was destroyed
+INFO:root:Browser was init with IS_LIN_OS: False
+INFO:root:Parsers object was created, running...
+INFO:root:Iteration 2022-11-20 21:29:01.438932 started at 
+INFO:root:Iteration 1 finished  |  job time:  0.33608436584472656 |  uptime:  0:00:07.617893 
+INFO:root:Iteration 2022-11-20 21:29:07.783432 started at 
+INFO:root:Iteration 2 finished  |  job time:  0.23954343795776367 |  uptime:  0:00:13.865852 
+INFO:root:Iteration 2022-11-20 21:29:13.031905 started at 
+INFO:root:Iteration 3 finished  |  job time:  0.26389431953430176 |  uptime:  0:00:19.138677 
+CRITICAL:root:Python app was closed by Keyboard Interrupt
+WARNING:root:db was destroyed
+INFO:root:Browser was init with IS_LIN_OS: False
+INFO:root:Parsers object was created, running...
+INFO:root:Iteration 2022-11-20 21:30:13.722048 started at 
+INFO:root:Iteration 1 finished  |  job time:  0.347048282623291 |  uptime:  0:00:07.809916 
+INFO:root:Iteration 2022-11-20 21:30:15.470513 started at 
+INFO:root:Iteration 2 finished  |  job time:  0.17608070373535156 |  uptime:  0:00:09.387420 
+INFO:root:Iteration 2022-11-20 21:30:16.647209 started at 
+INFO:root:Iteration 3 finished  |  job time:  0.21846532821655273 |  uptime:  0:00:10.607500 
+INFO:root:Iteration 2022-11-20 21:30:18.267856 started at 
+INFO:root:Iteration 4 finished  |  job time:  0.1870267391204834 |  uptime:  0:00:12.196709 
+INFO:root:Iteration 2022-11-20 21:30:19.456209 started at 
+INFO:root:Iteration 5 finished  |  job time:  0.25801873207092285 |  uptime:  0:00:13.457054 
+INFO:root:Iteration 2022-11-20 21:30:21.139797 started at 
+INFO:root:Iteration 6 finished  |  job time:  0.297924280166626 |  uptime:  0:00:15.162547 
+INFO:root:Iteration 2022-11-20 21:30:22.435018 started at 

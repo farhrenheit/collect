@@ -5,7 +5,7 @@ from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.remote.webdriver import WebDriver
 from selenium.webdriver.chrome.options import Options
-from settings import SCROLL_PAUSE_TIME, DRIVER_PATH, RESPONE_INIT_PAUSE, EVENT_TITLE, OS, DROP
+from settings import SCROLL_PAUSE_TIME, DRIVER_PATH, RESPONE_INIT_PAUSE, EVENT_TITLE, IS_LIN_OS, DROP
 from db import Base, get_db
 from sqlalchemy import select
 from models import GameSchema, CoeffSchema
@@ -13,7 +13,7 @@ from datetime import datetime, timedelta
 
 
 class LeonParser:
-    TARGET_URL = "https://leon.ru/esports/"
+    TARGET_URL = "https://leon.ru/esports/dota-2"
 
     def __init__(
         self,
@@ -23,12 +23,13 @@ class LeonParser:
     @property
     def _browser(self):
         options = Options()
-        if OS == 'LIN':
+        if IS_LIN_OS:
             options.add_argument("--headless")
             options.add_argument("--no-sandbox")
             options.add_argument("--disable-dev-shm-usage")
             browser = webdriver.Chrome(executable_path=DRIVER_PATH, options=options)
         browser = webdriver.Chrome(str(DRIVER_PATH), options=options)
+        logging.info('Browser was init with IS_LIN_OS: %s', IS_LIN_OS)
         return browser
 
     def _load_full_page(self):
@@ -83,13 +84,9 @@ class LeonParser:
         return dota_events
 
     @staticmethod
-    def get_data_from_dota_events(dota_events):
-        ev_num = 0
-        
+    def get_data_from_dota_events(dota_events):  
         for container in dota_events:
             dota_games = container.find_all(class_="sport-event-list-item__block")
-            add_g = add_c = 0
-            ev_num=ev_num+1
             for game in dota_games:
                 # get team names
                 titles = game.find_all(
@@ -162,7 +159,7 @@ class LeonParser:
                 if coef_schema:
                     _timestamp = coef_schema[-1].timestamp
                     if datetime.now() - _timestamp < timedelta(minutes=1):
-                        return print('coef exist')
+                        return logging.debug('Existed coef founded.')
                 coef_schema = CoeffSchema(
                     game_id=struct_data[0],
                     w_one=struct_data[1],
@@ -186,24 +183,36 @@ class LeonParser:
         time.sleep(RESPONE_INIT_PAUSE)
         # скролл страницы, чтобы она прогрузилась полностью
         try:
-            self._load_full_page()
-            # запуск парсера
-            for cnt in range(1,15):
+            #self._load_full_page()
+            for cnt in range(1,10000000):
                 start_time = time.time()
-                print(f'\nIteration ', cnt,' started at ', datetime.now())
+                print(f'\nIteration ', cnt,' started at ', datetime.now(), flush=True)
+                logging.info('Iteration %s started at ', datetime.now())
                 dota_events = self.find_dota_events()
                 self.get_data_from_dota_events(dota_events)
                 job_time = time.time() - start_time
-                print(f'Iteration ', cnt,' finished  |  job time: ', job_time, ' |  uptime: ', datetime.now()-uptime, flush=True)  
-                time.sleep(1+cnt%2)      
+                print('Iteration ', cnt,' finished  |  job time: ', job_time, ' |  uptime: ', datetime.now()-uptime, flush=True)
+                logging.info('Iteration %s finished  |  job time:  %s |  uptime:  %s ', cnt, job_time, datetime.now()-uptime)
+                time.sleep(1+cnt%2*0.4)  
+        except KeyboardInterrupt:
+                logging.critical('Python app was closed by Keyboard Interrupt')
+                logging.disable(logging.CRITICAL)
         finally:
             self.browser.quit()
 
 
 if __name__ == "__main__":
+    logging.basicConfig(filename='worker.log', encoding='utf-8', level=logging.INFO)
     if DROP:
         Base.metadata.drop_all()
+        logging.warning('db was destroyed')
     Base.metadata.create_all()
     parser = LeonParser()
-    parser.run()
+    try:
+        if parser.browser:
+            logging.info('Parsers object was created, running...') 
+            parser.run()
+    except Exception as e: 
+            logging.critical(f'parses object creating/runnung error:', e) 
+  
 
