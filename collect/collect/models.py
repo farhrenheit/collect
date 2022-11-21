@@ -9,6 +9,7 @@ class GameSchema(Base):
     id = Column(UUID_FIELD(as_uuid=True), primary_key=True, nullable=False)
     team_one = Column(String, nullable=False)
     team_two = Column(String, nullable=False)
+    game_found = Column(DateTime, nullable=False)
 
 
 class CoeffSchema(Base):

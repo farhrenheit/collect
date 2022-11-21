@@ -28,7 +28,7 @@ class LeonParser:
             options.add_argument("--headless")
             options.add_argument("--no-sandbox")
             options.add_argument("--disable-dev-shm-usage")
-            browser = webdriver.Chrome(executable_path=DRIVER_PATH, options=options)
+            #browser = webdriver.Chrome(executable_path=DRIVER_PATH, options=options)
         browser = webdriver.Chrome(str(DRIVER_PATH), options=options)
         logging.info('Browser was init with IS_LIN_OS: %s', IS_LIN_OS)
         return browser
@@ -130,7 +130,7 @@ class LeonParser:
                     return game_schema.id
                 # если игры нет - записываем ее
                 new_game = GameSchema(
-                    id=uuid4(), team_one=data[0], team_two=data[1]
+                    id=uuid4(), team_one=data[0], team_two=data[1], game_found=datetime.now()
                 )
                 session.add(new_game)
                 session.commit()
@@ -197,7 +197,7 @@ class LeonParser:
         time.sleep(RESPONE_INIT_PAUSE)
         # скролл страницы, чтобы она прогрузилась полностью
         try:
-            #self._load_full_page()
+            self._load_full_page()
             for cnt in range(1,10000000):
                 start_time = time.time()
                 os.system('cls' if os.name == 'nt' else 'clear')
