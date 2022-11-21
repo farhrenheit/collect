@@ -86,6 +86,7 @@ class LeonParser:
 
     @staticmethod
     def get_data_from_dota_events(dota_events):  
+        coeff_upd = 0
         for container in dota_events:
             dota_games = container.find_all(class_="sport-event-list-item__block")
             for game in dota_games:
@@ -102,7 +103,10 @@ class LeonParser:
                 )
                 coef_info = [i.text.strip() for i in coefs]
                 coef_info.append(game_id)
-                parser.check_write('coef_by_game', coef_info)
+                if parser.check_write('coef_by_game', coef_info): coeff_upd += 1
+        if coeff_upd != 0:
+            print(f'|   *', coeff_upd,' game coeffs was updated')
+        
     
     def check_write(self, schema, data):
         with get_db() as session:
@@ -122,6 +126,7 @@ class LeonParser:
                     .one_or_none()
                 )
                 if game_schema:
+                    logging.info('Existed game %s x %s found.', data[0], data[1])
                     return game_schema.id
                 # если игры нет - записываем ее
                 new_game = GameSchema(
@@ -134,15 +139,17 @@ class LeonParser:
 
             if schema == 'coef_by_game':
                 # придаём коэффициенту структуру для записи в БД
-                if len(data) == 2: # [+20, game_id] 
-                    struct_data = [data[1],None,None,None,''.join(filter(str.isdigit,data[0]))]
-                if len(data) == 3: # [1.5,2.5, game_id]
-                    struct_data = [data[2],data[0],None,data[1],None]
+                if len(data) == 1:   # [game_id]
+                    struct_data = [data[0],None,None,None,None,False]
+                elif len(data) == 2: # [+20, game_id]
+                    struct_data = [data[1],None,None,None,''.join(filter(str.isdigit,data[0])),False]
+                elif len(data) == 3: # [1.5,2.5, game_id]
+                    struct_data = [data[2],data[0],None,data[1],None,False]
                 elif len(data) == 4: #[1.5,2.5,1.8, game_id]
-                    struct_data = [data[3],data[0],None,data[1],data[2]]
+                    struct_data = [data[3],data[0],None,data[1],data[2],False]
                 elif len(data) == 5: #[1.5,2.5,1.8, +20 game_id]
-                    struct_data = [data[4],data[0],data[1],data[2],''.join(filter(str.isdigit,data[3]))]
-                print(struct_data)
+                    struct_data = [data[4],data[0],data[1],data[2],''.join(filter(str.isdigit,data[3])),False]
+                else: return logging.critical('Unexpected lenght of data: %s |data: %s', len(data), data)
                 # Проверяем есть ли запись коэффициента в db
                 try:
                     coef_schema: CoeffSchema = (
@@ -154,30 +161,32 @@ class LeonParser:
                                     CoeffSchema.draw == struct_data[2],
                                     CoeffSchema.w_two == struct_data[3],
                                     CoeffSchema.plus == struct_data[4],
-                                )
+                                )   # stucture: [game_id, w_one, draw, w_two, plus, dupl]
                             )
                         )
                         .scalars().all()
                     )
                     if coef_schema:
+                        struct_data[5] = True
                         _timestamp = coef_schema[-1].timestamp
                         if datetime.now() - _timestamp < timedelta(minutes=1):
-                            return logging.debug('Existed coef founded.')
+                            logging.info('Existed coef %s found.', struct_data[0])
+                            return False
                     coef_schema = CoeffSchema(
                         game_id=struct_data[0],
                         w_one=struct_data[1],
                         draw=struct_data[2],
                         w_two=struct_data[3],
                         plus=struct_data[4],
+                        dupl=struct_data[5],
                         timestamp=datetime.now(),
                         id=uuid4()
                     )
                     session.add(coef_schema)
                     session.commit()
-                    return coef_schema.id
+                    return True
                 except UnboundLocalError:
-                    return logging.critical('Problem with coef_schema checking | ')
-                
+                    return logging.critical('Problem with coef_schema checking | %s', coef_schema)
             
             
     def run(self):
@@ -210,13 +219,15 @@ class LeonParser:
 if __name__ == "__main__":
     logging.basicConfig(filename='worker.log', encoding='utf-8', level=logging.INFO)
     if DROP:
-        Base.metadata.drop_all()
-        logging.warning('db was destroyed')
+        print('Please approve dropping of database (write "drop"), or press Enter to continue without cleaning.')
+        if input() == 'drop':
+            Base.metadata.drop_all()
+            logging.warning('db was dropped due app starting')
     Base.metadata.create_all()
     parser = LeonParser()
     try:
         if parser.browser:
-            logging.info('Parsers object was created, running...') 
+            logging.info('Parser object was created, running...') 
             parser.run()
     except Exception as e: 
             logging.critical(f'parses object creating/runnung error:', e) 
