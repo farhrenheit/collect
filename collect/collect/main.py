@@ -1,5 +1,6 @@
 import time
 import logging
+import os
 from uuid import uuid4
 from bs4 import BeautifulSoup
 from selenium import webdriver
@@ -141,37 +142,41 @@ class LeonParser:
                     struct_data = [data[3],data[0],None,data[1],data[2]]
                 elif len(data) == 5: #[1.5,2.5,1.8, +20 game_id]
                     struct_data = [data[4],data[0],data[1],data[2],''.join(filter(str.isdigit,data[3]))]
+                print(struct_data)
                 # Проверяем есть ли запись коэффициента в db
-                coef_schema: CoeffSchema = (
-                    (
-                        session.execute(
-                            select(CoeffSchema).where(
-                                CoeffSchema.game_id == struct_data[0],
-                                CoeffSchema.w_one == struct_data[1],
-                                CoeffSchema.draw == struct_data[2],
-                                CoeffSchema.w_two == struct_data[3],
-                                CoeffSchema.plus == struct_data[4],
+                try:
+                    coef_schema: CoeffSchema = (
+                        (
+                            session.execute(
+                                select(CoeffSchema).where(
+                                    CoeffSchema.game_id == struct_data[0],
+                                    CoeffSchema.w_one == struct_data[1],
+                                    CoeffSchema.draw == struct_data[2],
+                                    CoeffSchema.w_two == struct_data[3],
+                                    CoeffSchema.plus == struct_data[4],
+                                )
                             )
                         )
+                        .scalars().all()
                     )
-                    .scalars().all()
-                )
-                if coef_schema:
-                    _timestamp = coef_schema[-1].timestamp
-                    if datetime.now() - _timestamp < timedelta(minutes=1):
-                        return logging.debug('Existed coef founded.')
-                coef_schema = CoeffSchema(
-                    game_id=struct_data[0],
-                    w_one=struct_data[1],
-                    draw=struct_data[2],
-                    w_two=struct_data[3],
-                    plus=struct_data[4],
-                    timestamp=datetime.now(),
-                    id=uuid4()
-                )
-                session.add(coef_schema)
-                session.commit()
-                return coef_schema.id
+                    if coef_schema:
+                        _timestamp = coef_schema[-1].timestamp
+                        if datetime.now() - _timestamp < timedelta(minutes=1):
+                            return logging.debug('Existed coef founded.')
+                    coef_schema = CoeffSchema(
+                        game_id=struct_data[0],
+                        w_one=struct_data[1],
+                        draw=struct_data[2],
+                        w_two=struct_data[3],
+                        plus=struct_data[4],
+                        timestamp=datetime.now(),
+                        id=uuid4()
+                    )
+                    session.add(coef_schema)
+                    session.commit()
+                    return coef_schema.id
+                except UnboundLocalError:
+                    return logging.critical('Problem with coef_schema checking | ')
                 
             
             
@@ -186,8 +191,8 @@ class LeonParser:
             #self._load_full_page()
             for cnt in range(1,10000000):
                 start_time = time.time()
+                os.system('cls' if os.name == 'nt' else 'clear')
                 print(f'\nIteration ', cnt,' started at ', datetime.now(), flush=True)
-                logging.info('Iteration %s started at ', datetime.now())
                 dota_events = self.find_dota_events()
                 self.get_data_from_dota_events(dota_events)
                 job_time = time.time() - start_time
@@ -198,6 +203,7 @@ class LeonParser:
                 logging.critical('Python app was closed by Keyboard Interrupt')
                 logging.disable(logging.CRITICAL)
         finally:
+            logging.critical('Parser loop is finished.')
             self.browser.quit()
 
 
