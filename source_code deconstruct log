@@ -1,0 +1,25 @@
+04.12 leon.ru/esports/dota-2/
+
+	#now event-list contaion only one group--shown:
+  
+	group--shown, # contain 2 logic containers
+		data-v-49345a15	# with live games
+			data-v-763af10d
+        data-v-19e3dd0f data-v-763af10d class="sport-event-list-item__block" # live game
+			data-v-763af10d
+      data-v-763af10d
+		data-v-49345a15 # with upcoming games
+			data-v-49345a15 class="group--coming"
+				div w/o name
+					data-v-763af10d class="league-element-inner__holder" # league container
+						data-v-19e3dd0f class="sport-event-list-item__block" # game within league
+						data-v-19e3dd0f class="sport-event-list-item__block"
+						data-v-19e3dd0f class="sport-event-list-item__block"
+					data-v-763af10d
+					data-v-763af10d
+				
+	# and batch of empty
+	data-v-49345a15
+	data-v-49345a15
+	data-v-49345a15
+	
