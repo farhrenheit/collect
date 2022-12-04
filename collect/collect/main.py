@@ -56,37 +56,27 @@ class LeonParser:
         print("|done")
         
     def find_dota_events(self, remove_heads=True):
-        empty_g = 0
-        fully_g = 0
         soup: BeautifulSoup = BeautifulSoup(self.browser.page_source, "html.parser")
-        containers = soup.find_all(class_="group--shown")
-        print(f"| containers found:", len(containers))
+        main_container = soup.find(class_="group--shown")
+        league = main_container.find_all(class_="league-element-inner__holder") 
+        liveg = 0
         dota_events = []
-        for container in containers:
+        for container in league: 
+            dota_events.append(container)
             if not container:
                 continue
             try:
-                if not container.div.div:
-                    empty_g=empty_g+1
-                else:
-                    fully_g=fully_g+1
-                if remove_heads:
-                    head_containers = container.find_all(class_="sport-event-list-sport-headline")
-                    for head in head_containers:
-                        head.clear()
-                # check international
-                if EVENT_TITLE in str(container):
-                    dota_events.append(container)
-            except AttributeError:
-                empty_g=empty_g+1
-        print(f'|  empty:', empty_g)
-        print(f'|  fully:', fully_g)
-        print(f'|   events found:', len(dota_events))
+                if not "Через" in container.parent.text:
+                    liveg = liveg + 1
+            except AttributeError:  
+                logging.exception('find_dota_events AttributeError')
+        print(f'|  Live events found:', liveg)
+        print(f'|  Overall events found:', len(dota_events))
         return dota_events
 
     @staticmethod
     def get_data_from_dota_events(dota_events):  
-        coeff_upd = 0
+        coeff_upd = gcount = glcount = 0
         for container in dota_events:
             dota_games = container.find_all(class_="sport-event-list-item__block")
             for game in dota_games:
@@ -94,6 +84,9 @@ class LeonParser:
                 titles = game.find_all(
                     "span", attrs={"class": "sport-event-list-item-competitor__name"}
                 )
+                if game.find(class_="live-progress__stage"):
+                    glcount = glcount + 1
+                gcount = gcount + 1
                 t_one_name, t_two_name = [i.text.strip() for i in titles]
                 game_id = parser.check_write('s_game', [t_one_name, t_two_name])
                 # get koef
@@ -104,8 +97,12 @@ class LeonParser:
                 coef_info = [i.text.strip() for i in coefs]
                 coef_info.append(game_id)
                 if parser.check_write('coef_by_game', coef_info): coeff_upd += 1
+        # logging finished iteration
+        print(f'|   - live games found:', glcount)
+        print(f'|   - overall games found:', gcount)
         if coeff_upd != 0:
             print(f'|   *', coeff_upd,' game coeffs was updated')
+        #return len(coef_info)
         
     
     def check_write(self, schema, data):
@@ -170,7 +167,7 @@ class LeonParser:
                         struct_data[5] = True
                         _timestamp = coef_schema[-1].timestamp
                         if datetime.now() - _timestamp < timedelta(minutes=1):
-                            logging.info('Existed coef %s found.', struct_data[0])
+                            logging.debug('Existed coef %s found.', struct_data[0])
                             return False
                     coef_schema = CoeffSchema(
                         game_id=struct_data[0],
