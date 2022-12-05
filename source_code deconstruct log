@@ -5,7 +5,7 @@
 	group--shown, # contain 2 logic containers
 		data-v-49345a15	# with live games
 			data-v-763af10d
-                          data-v-19e3dd0f data-v-763af10d class="sport-event-list-item__block" # live game
+                        	data-v-19e3dd0f data-v-763af10d class="sport-event-list-item__block" # live game
 			data-v-763af10d
       data-v-763af10d
 		data-v-49345a15 # with upcoming games
