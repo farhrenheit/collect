@@ -6,11 +6,12 @@ from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.remote.webdriver import WebDriver
 from selenium.webdriver.chrome.options import Options
-from settings import SCROLL_PAUSE_TIME, DRIVER_PATH, RESPONE_INIT_PAUSE, EVENT_TITLE, IS_LIN_OS, DROP
+from settings import SCROLL_PAUSE_TIME, DRIVER_PATH, RESPONE_INIT_PAUSE, EVENT_TITLE, IS_LIN_OS, DROP, HTML_PATH
 from db import Base, get_db
 from sqlalchemy import select
 from models import GameSchema, CoeffSchema
 from datetime import datetime, timedelta
+import codecs
 
 
 class LeonParser:
@@ -55,7 +56,7 @@ class LeonParser:
         scroll(temp_h,200) ## scroll up
         print("|done")
         
-    def find_dota_events(self, remove_heads=True):
+    def find_dota_events(self):
         soup: BeautifulSoup = BeautifulSoup(self.browser.page_source, "html.parser")
         main_container = soup.find(class_="group--shown")
         league = main_container.find_all(class_="league-element-inner__holder") 
@@ -166,7 +167,7 @@ class LeonParser:
                     if coef_schema:
                         struct_data[5] = True
                         _timestamp = coef_schema[-1].timestamp
-                        if datetime.now() - _timestamp < timedelta(minutes=1):
+                        if datetime.now() - _timestamp < timedelta(minutes=10):
                             logging.debug('Existed coef %s found.', struct_data[0])
                             return False
                     coef_schema = CoeffSchema(
@@ -185,7 +186,14 @@ class LeonParser:
                 except UnboundLocalError:
                     return logging.critical('Problem with coef_schema checking | %s', coef_schema)
             
-            
+    def _save_html(self):
+        d = str(datetime.now().strftime("%d.%m-%Hh%Mm")+'.html')   
+        f = codecs.open(HTML_PATH+d, 'w', 'utf-8')
+        h = self.browser.page_source
+        #soup2: BeautifulSoup = BeautifulSoup(h, "html.parser")
+        #[x.extract() for x in soup2.find_all('script')]
+        f.write(h)
+    
     def run(self):
         uptime = datetime.now()
         # запрос на урл
@@ -195,8 +203,11 @@ class LeonParser:
         # скролл страницы, чтобы она прогрузилась полностью
         try:
             self._load_full_page()
+            self._save_html()
             for cnt in range(1,10000000):
                 start_time = time.time()
+                if cnt % 7200 == 0:
+                    self._save_html()
                 os.system('cls' if os.name == 'nt' else 'clear')
                 print(f'\nIteration ', cnt,' started at ', datetime.now(), flush=True)
                 dota_events = self.find_dota_events()
