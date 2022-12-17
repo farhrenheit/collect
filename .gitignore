@@ -1,2 +1,5 @@
 
 *.pyc
+collect/collect_stats/secret.py
+*.html
+*.log
